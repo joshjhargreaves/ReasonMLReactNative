@@ -1,4 +1,4 @@
-package com.reasonmlnative;
+package com.reasonmlreactnative;
 
 import android.app.Application;
 

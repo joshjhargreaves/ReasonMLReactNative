@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-export default class reasonMLNative extends Component {
+export default class ReasonMLReactNative extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('reasonMLNative', () => reasonMLNative);
+AppRegistry.registerComponent('ReasonMLReactNative', () => ReasonMLReactNative);
