@@ -9,8 +9,13 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules,
 } from 'react-native';
+
+var ReasonNative = NativeModules.ReasonNative;
+
+ReasonNative.runBenchmark();
 
 export default class ReasonMLReactNative extends Component {
   render() {
