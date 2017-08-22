@@ -12,6 +12,11 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+extern int fib(int n);
+extern char * format_result(int n);
+extern char * match_string(char * pattern, char * string);
+extern void ocaml_init(void);
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -31,6 +36,17 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  int result;
+  
+  /* Initialize OCaml code */
+  ocaml_init();
+  /* Do some computation */
+  result = fib(23);
+  printf("fib(23) = %s\n", format_result(result));
+  
+  printf("%s", match_string("[lo]+", "hellollo3"));
+  
   return YES;
 }
 
