@@ -13,7 +13,5 @@ import {
 import Bench from './src/bench.js';
 
 const ReasonNative = NativeModules.ReasonNative;
-ReasonNative.runBenchmark();
-Bench.runBenchmarks(1000000);
 
-AppRegistry.registerComponent('ReasonMLReactNative', () => app);
+AppRegistry.registerComponent('ReasonMLReactNative', () => Bench);
