@@ -12,6 +12,4 @@ import {
 } from 'react-native';
 import Bench from './src/bench.js';
 
-const ReasonNative = NativeModules.ReasonNative;
-
 AppRegistry.registerComponent('ReasonMLReactNative', () => Bench);

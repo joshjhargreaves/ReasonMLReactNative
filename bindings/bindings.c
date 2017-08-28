@@ -2,10 +2,13 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <caml/alloc.h>
 #include <caml/memory.h>
 #include <caml/mlvalues.h>
 #include <caml/callback.h>
+
+bool isInitialised = false;
 
 int fib(int n)
 {
@@ -48,6 +51,10 @@ char * match_string(char * pattern, char * string)
 
 void ocaml_init(void)
 {
-  char *arg = NULL;
-  caml_main(&arg);
+  if (!isInitialised)
+  {
+    isInitialised = true;
+    char *arg = NULL;
+    caml_main(&arg);
+  }
 }

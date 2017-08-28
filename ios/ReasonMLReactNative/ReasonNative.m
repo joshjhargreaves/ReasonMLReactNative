@@ -9,21 +9,28 @@ extern char * format_result(int n);
 extern char * match_string(char * pattern, char * string);
 extern void ocaml_init(void);
 
+- (instancetype)init
+{
+  self = [super init];
+  if (self) {
+    ocaml_init();
+  }
+  return self;
+}
+
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(runBenchmark)
+RCT_REMAP_METHOD(runBenchmark,
+                 runBenchmarkWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
 {
-  int result;
+  double result;
   
-  /* Initialize OCaml code */
-  ocaml_init();
-  /* Do some computation */
-  result = fib(23);
-  printf("fib(23) = %s\n", format_result(result));
-  
-  printf("%s", match_string("[lo]+", "hellollo3"));
-  
-  RCTLogInfo(@"%s, ", match_string("[lo]+", "hellollo3"));
+  NSDate *methodStart = [NSDate date];
+  result = fib(100000);
+  NSDate *methodFinish = [NSDate date];
+  NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+  resolve(@"");
 }
 
 @end

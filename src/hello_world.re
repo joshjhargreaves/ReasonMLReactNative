@@ -1,3 +1,18 @@
+open Friends;
+
+let fib2 n => {
+  let t = Sys.time();
+  for x in 1 to n{
+    let _ = friends();
+  };
+  Sys.time() -. t;
+};
+
+let resultAndPrintPerson () => {
+  let result = friends();
+  printPerson result.(0);
+};
+
 let rec fib n => n < 2 ? 1 : fib (n - 1) + fib (n - 2);
 
 let format_result n => Printf.sprintf "Result from OCaml is: %d!! \n" n;
@@ -22,8 +37,8 @@ let match_string pattern string => {
   }
 };
 
-let _ = Callback.register "fib" fib;
+let _ = Callback.register "fib" fib2;
 
-let _ = Callback.register "format_result" format_result;
+let _ = Callback.register "format_result" resultAndPrintPerson;
 
 let _ = Callback.register "match_string" match_string;
