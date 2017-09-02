@@ -8,11 +8,11 @@
 #include <caml/mlvalues.h>
 #include <caml/callback.h>
 
-double fib(int n)
+double benchmark(int n)
 {
   static value *fib_closure = NULL;
   if (fib_closure == NULL)
-    fib_closure = caml_named_value("fib");
+    fib_closure = caml_named_value("benchmark");
   return Double_val(caml_callback(*fib_closure, Val_int(n)));
 }
 

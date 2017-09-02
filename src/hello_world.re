@@ -43,7 +43,7 @@ let match_string pattern string => {
   }
 };
 
-let _ = Callback.register "fib" bench;
+let _ = Callback.register "benchmark" bench;
 
 let _ = Callback.register "match_string" match_string;
 

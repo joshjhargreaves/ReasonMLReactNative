@@ -5,7 +5,7 @@
 
 @implementation ReasonNative
 
-extern double fib(int n);
+extern double benchmark(int n);
 extern TimingResultStruct multiple_values(int n);
 extern char * match_string(char * pattern, char * string);
 extern void ocaml_init(void);
