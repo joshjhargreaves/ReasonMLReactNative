@@ -7,7 +7,6 @@
 
 extern double fib(int n);
 extern TimingResultStruct multiple_values(int n);
-extern char * format_result(int n);
 extern char * match_string(char * pattern, char * string);
 extern void ocaml_init(void);
 

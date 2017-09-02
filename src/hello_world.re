@@ -1,20 +1,9 @@
 open Friends;
 
 type result = {
-  cpuTime: float,
-  friends: string
+  duration: float,
+  result: string
 };
-
-let resultAndPrintPerson () => {
-  let result = friends();
-  printPerson result.(0);
-};
-
-let rec joinPeople seperator people =>
-  switch people {
-  | [] => ""
-  | [hd, ...tl] => seperator ^ (joinPeople seperator tl)
-  };
 
 let bench n => {
   let t = Sys.time();
@@ -27,7 +16,7 @@ let bench n => {
 let multipleValues n: result => {
   let time = bench n;
   let result = friends();
-  { cpuTime: time, friends: printPerson result.(0) };
+  { duration: time, result: printPerson result.(0) };
 };
 
 let rec fib n => n < 2 ? 1 : fib (n - 1) + fib (n - 2);
@@ -55,8 +44,6 @@ let match_string pattern string => {
 };
 
 let _ = Callback.register "fib" bench;
-
-let _ = Callback.register "format_result" resultAndPrintPerson;
 
 let _ = Callback.register "match_string" match_string;
 
