@@ -8,7 +8,10 @@
 #include <caml/mlvalues.h>
 #include <caml/callback.h>
 
-bool isInitialised = false;
+struct TimingResultStruct {
+  double time;
+  char *friends;
+};
 
 double fib(int n)
 {
@@ -16,6 +19,18 @@ double fib(int n)
   if (fib_closure == NULL)
     fib_closure = caml_named_value("fib");
   return Double_val(caml_callback(*fib_closure, Val_int(n)));
+}
+
+double multiple_values(int n)
+{
+  CAMLparam0 ();
+  CAMLlocal1(ml_record);
+  static value *fib_closure = NULL;
+  if (fib_closure == NULL)
+    fib_closure = caml_named_value("multiple_return_values");
+  ml_record = caml_callback(*fib_closure, Val_int(n));
+  double duration = Double_val(Field(ml_record, 0));
+  CAMLreturnT(double, duration);
 }
 
 char *format_result(int n)
@@ -51,6 +66,7 @@ char * match_string(char * pattern, char * string)
 
 void ocaml_init(void)
 {
+  static bool isInitialised = false;
   if (!isInitialised)
   {
     isInitialised = true;

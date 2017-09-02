@@ -16,12 +16,18 @@ let rec joinPeople seperator people =>
   | [hd, ...tl] => seperator ^ (joinPeople seperator tl)
   };
 
-let fib2 n => {
+let bench n => {
   let t = Sys.time();
   for x in 1 to n{
     let _ = friends();
   };
-  Sys.time() -. t;
+  (Sys.time() -. t) *. 1000.0;
+};
+
+let multipleValues n: result => {
+  let time = bench n;
+  let result = friends();
+  { cpuTime: time, friends: printPerson result.(0) };
 };
 
 let rec fib n => n < 2 ? 1 : fib (n - 1) + fib (n - 2);
@@ -48,8 +54,10 @@ let match_string pattern string => {
   }
 };
 
-let _ = Callback.register "fib" fib2;
+let _ = Callback.register "fib" bench;
 
 let _ = Callback.register "format_result" resultAndPrintPerson;
 
 let _ = Callback.register "match_string" match_string;
+
+let _ = Callback.register "multiple_return_values" multipleValues;
