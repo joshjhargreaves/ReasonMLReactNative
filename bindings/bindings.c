@@ -10,12 +10,12 @@
 
 bool isInitialised = false;
 
-int fib(int n)
+double fib(int n)
 {
   static value *fib_closure = NULL;
   if (fib_closure == NULL)
     fib_closure = caml_named_value("fib");
-  return Int_val(caml_callback(*fib_closure, Val_int(n)));
+  return Double_val(caml_callback(*fib_closure, Val_int(n)));
 }
 
 char *format_result(int n)

@@ -4,7 +4,7 @@
 
 @implementation ReasonNative
 
-extern int fib(int n);
+extern double fib(int n);
 extern char * format_result(int n);
 extern char * match_string(char * pattern, char * string);
 extern void ocaml_init(void);
@@ -28,6 +28,7 @@ RCT_REMAP_METHOD(runBenchmark,
   
   NSDate *methodStart = [NSDate date];
   result = fib(100000);
+  printf("result = %g\n", result);
   NSDate *methodFinish = [NSDate date];
   NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
   resolve(@"");

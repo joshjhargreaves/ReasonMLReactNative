@@ -43,7 +43,7 @@ export default class BenchMark extends Component {
   }
 
   async runNativeBenchmark() {
-    var start = new Date().getTime();
+    const start = new Date().getTime();
     await ReasonNative.runBenchmark();
     const end = new Date().getTime();
     const time = end - start;

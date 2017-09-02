@@ -1,16 +1,27 @@
 open Friends;
 
+type result = {
+  cpuTime: float,
+  friends: string
+};
+
+let resultAndPrintPerson () => {
+  let result = friends();
+  printPerson result.(0);
+};
+
+let rec joinPeople seperator people =>
+  switch people {
+  | [] => ""
+  | [hd, ...tl] => seperator ^ (joinPeople seperator tl)
+  };
+
 let fib2 n => {
   let t = Sys.time();
   for x in 1 to n{
     let _ = friends();
   };
   Sys.time() -. t;
-};
-
-let resultAndPrintPerson () => {
-  let result = friends();
-  printPerson result.(0);
 };
 
 let rec fib n => n < 2 ? 1 : fib (n - 1) + fib (n - 2);
