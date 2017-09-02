@@ -1,5 +1,5 @@
 /* File modwrap.c -- wrappers around the OCaml functions */
-
+#include "bindings.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -7,11 +7,6 @@
 #include <caml/memory.h>
 #include <caml/mlvalues.h>
 #include <caml/callback.h>
-
-struct TimingResultStruct {
-  double time;
-  char *friends;
-};
 
 double fib(int n)
 {
@@ -21,16 +16,22 @@ double fib(int n)
   return Double_val(caml_callback(*fib_closure, Val_int(n)));
 }
 
-double multiple_values(int n)
+TimingResultStruct multiple_values(int n)
 {
   CAMLparam0 ();
   CAMLlocal1(ml_record);
   static value *fib_closure = NULL;
   if (fib_closure == NULL)
     fib_closure = caml_named_value("multiple_return_values");
+
   ml_record = caml_callback(*fib_closure, Val_int(n));
   double duration = Double_val(Field(ml_record, 0));
-  CAMLreturnT(double, duration);
+  char * friends = String_val(Field(ml_record, 1));
+
+  TimingResultStruct result;
+  result.duration = duration;
+  result.result = friends;
+  CAMLreturnT(TimingResultStruct, result);
 }
 
 char *format_result(int n)

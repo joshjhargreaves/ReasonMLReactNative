@@ -285,6 +285,7 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		AF65FD2F1F5AE24D00DE894B /* bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bindings.h; path = ../bindings/bindings.h; sourceTree = "<group>"; };
 		F045CC1D1F4C40D000466795 /* ReasonNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReasonNative.m; path = ReasonMLReactNative/ReasonNative.m; sourceTree = "<group>"; };
 		F045CC3C1F4C40E100466795 /* ReasonNative.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReasonNative.h; path = ReasonMLReactNative/ReasonNative.h; sourceTree = "<group>"; };
 		F0D9C6231F4C3849003EB4A6 /* libgobi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgobi.a; sourceTree = "<group>"; };
@@ -432,6 +433,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				F045CC1D1F4C40D000466795 /* ReasonNative.m */,
 				F045CC3C1F4C40E100466795 /* ReasonNative.h */,
+				AF65FD2F1F5AE24D00DE894B /* bindings.h */,
 			);
 			name = ReasonMLReactNative;
 			sourceTree = "<group>";

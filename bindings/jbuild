@@ -2,7 +2,7 @@
 
 (rule
  ((targets (bindings.o))
-  (deps    (bindings.c))
+  (deps    (bindings.c bindings.h))
   (action  (bash "\
     ${OCAMLOPT} -c ${<};\
     "))))
